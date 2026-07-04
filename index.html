@@ -3,68 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Silk Saree Surprise</title>
 
-<title>Seematti Silks Anniversary Giveaway</title>
-
-<meta property="og:title" content="🎉 Seematti Silks Anniversary Giveaway">
-<meta property="og:description" content="Congratulations! You may be eligible for a FREE Silk Saree.">
-<meta property="og:image" content="thumbnail.jpg">
+<meta property="og:title" content="🎁 Lucky Silk Saree Surprise">
+<meta property="og:description" content="Tap to see if you were selected for today's surprise!">
+<meta property="og:image" content="Thumbnail.png">
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#4b1f12;
-color:white;
+}
+
+body{
+background:url('Thumbnail.png') center center/cover no-repeat;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-text-align:center;
 }
+
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+}
+
 .box{
-max-width:380px;
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
 padding:20px;
+max-width:360px;
 }
+
 button{
-padding:14px 30px;
-font-size:18px;
-border:none;
-border-radius:8px;
-background:#d4af37;
-cursor:pointer;
+margin-top:20px;
+padding:15px 35px;
+font-size:20px;
 font-weight:bold;
+background:#FFD700;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
+
+#loading,#final{
+display:none;
+}
+
 .loader{
-border:8px solid #eee;
-border-top:8px solid gold;
-border-radius:50%;
 width:70px;
 height:70px;
+border:8px solid rgba(255,255,255,.3);
+border-top:8px solid #FFD700;
+border-radius:50%;
 animation:spin 1s linear infinite;
 margin:auto;
 }
+
 @keyframes spin{
-100%{transform:rotate(360deg);}
+100%{
+transform:rotate(360deg);
 }
-img{
+}
+
+#final img{
 width:260px;
 border-radius:15px;
-}
-#loading,#final{
-display:none;
+box-shadow:0 0 20px black;
 }
 </style>
 </head>
 
 <body>
 
+<div class="overlay"></div>
+
 <div class="box" id="offer">
-<h1>🎉 SEEMATTI SILKS</h1>
+<h1>🎉 Congratulations!</h1>
+<p>You have been selected for today's Lucky Silk Saree Surprise.</p>
 
-<h2>Anniversary Celebration</h2>
+<button onclick="start()">Claim Surprise</button>
+</div>
 
-<h1 style="color:gold;">FREE SILK SAREE</h1>
+<div class="box" id="loading">
+<div class="loader"></div>
+<h2>Checking eligibility...</h2>
+<p>Please wait...</p>
+</div>
 
-<p>
-✨ Congratulations! ✨
+<div class="box" id="final">
+<img src="My photo .jpg" alt="My Photo">
+<h1>😂 GOTCHA!</h1>
+<p>It was just a prank! 😄</p>
+</div>
+
+<script>
+function start(){
+document.getElementById("offer").style.display="none";
+document.getElementById("loading").style.display="block";
+
+setTimeout(function(){
+document.getElementById("loading").style.display="none";
+document.getElementById("final").style.display="block";
+},3000);
+}
+</script>
+
+</body>
+</html>
